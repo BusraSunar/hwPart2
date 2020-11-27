@@ -134,7 +134,7 @@ public class App
       return "Hello world.";
   }
 
-  public static boolean search(ArrayList<Integer> array, int e) {
+  public static boolean search(ArrayList<Integer> array, ArrayList<Integer> array2, int e) {
     System.out.println("inside search");
     if (array == null) return false;
 
@@ -153,6 +153,8 @@ public class App
         //System.out.println(req.queryParams("input1"));
         //System.out.println(req.queryParams("input2"));
 
+
+        //input1 icin 
         String input1 = req.queryParams("input1");
         java.util.Scanner sc1 = new java.util.Scanner(input1);
         sc1.useDelimiter("[;\r\n]+");
@@ -165,11 +167,24 @@ public class App
         sc1.close();
         System.out.println(inputList);
 
+        //input2 icin 
+        String input2 = req.queryParams("input2");
+        java.util.Scanner sc2 = new java.util.Scanner(input2);
+        sc2.useDelimiter("[;\r\n]+");
+        java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
+        while (sc2.hasNext())
+        {
+          int value = Integer.parseInt(sc2.next().replaceAll("\\s",""));
+          inputList2.add(value);
+        }
+        sc2.close();
+        System.out.println(inputList2);
 
-        String input2 = req.queryParams("input2").replaceAll("\\s","");
-        int input2AsInt = Integer.parseInt(input2);
 
-        boolean result = App.search(inputList, input2AsInt);
+        String input3 = req.queryParams("input3").replaceAll("\\s","");
+        int input2AsInt = Integer.parseInt(input3);
+
+        boolean result = App.search(inputList, inputList2 ,input2AsInt); //buraya bak 
 
         Map<String, Boolean> map = new HashMap<String, Boolean>();
         map.put("result", result);

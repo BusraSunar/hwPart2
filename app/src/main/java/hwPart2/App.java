@@ -134,17 +134,24 @@ public class App
       return "Hello world.";
   }
 
-  public static boolean isItMultiplied(ArrayList<Integer> array, ArrayList<Integer> array2, int e) {
+  public static boolean isItMultiplied(ArrayList<Integer> array, ArrayList<Integer> array2, int e) throws ArithmeticException{
     System.out.println("inside search");
-    if (array == null) return false;
+    int counter =0;
+    if (array == null || array2 == null) return false;
 
-    if (array2 == null) return false;
+    if(e ==0) throw new ArithmeticException("dividing a number by 0 is not allowed ");
+
+    if(array.size()!=array2.size()) return false;
 
     for (int i=0; i <array.size();i++){
       if(array.get(i) == array2.get(i)/e)
-        return true;
+        counter++;
 
     }
+
+    if(counter == array.size())
+      return true;
+
     return false;
   }
 

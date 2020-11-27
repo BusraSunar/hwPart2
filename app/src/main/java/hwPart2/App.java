@@ -134,12 +134,16 @@ public class App
       return "Hello world.";
   }
 
-  public static boolean search(ArrayList<Integer> array, ArrayList<Integer> array2, int e) {
+  public static boolean isItMultiplied(ArrayList<Integer> array, ArrayList<Integer> array2, int e) {
     System.out.println("inside search");
     if (array == null) return false;
 
-    for (int elt : array) {
-      if (elt == e) return true;
+    if (array2 == null) return false;
+
+    for (int i=0; i <array.size();i++){
+      if(array.get(i) == array2.get(i)/e)
+        return true;
+
     }
     return false;
   }
@@ -184,7 +188,7 @@ public class App
         String input3 = req.queryParams("input3").replaceAll("\\s","");
         int input2AsInt = Integer.parseInt(input3);
 
-        boolean result = App.search(inputList, inputList2 ,input2AsInt); //buraya bak 
+        boolean result = App.isItMultiplied(inputList, inputList2 ,input2AsInt); //buraya bak 
 
         Map<String, Boolean> map = new HashMap<String, Boolean>();
         map.put("result", result);

@@ -30,6 +30,8 @@ public class App
 
     if(e ==0) throw new ArithmeticException();
 
+    if(array.isEmpty() || array2.isEmpty()) return false;
+
     if(array.size()!=array2.size()) return false;
 
     for (int i=0; i <array.size();i++){
